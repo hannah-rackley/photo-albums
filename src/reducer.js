@@ -12,9 +12,17 @@ const loadAlbums = (oldState, action) => {
     }
 }
 
+const loadPhotos = (oldState, action) => {
+    return {
+        ...oldState, 
+        photos: action.photos, 
+    }
+}
+
  const reducerRouter = {
     "LOAD_USERS": loadUsers,
-    "LOAD_ALBUMS": loadAlbums
+    "LOAD_ALBUMS": loadAlbums,
+    "LOAD_PHOTOS": loadPhotos
 }
 
 const reducer = (oldState, action) => {

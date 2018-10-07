@@ -22,8 +22,12 @@ class UserAlbumsPage extends React.Component {
             return (
                 <div>
                     <Navigation />
+                    <h1>{this.props.user.name}'s Albums</h1>
                     {filteredAlbums.map(album => 
-                        { return <NavLink to={`/album/${album.id}`} key={album.id}>{album.title}</NavLink>})}
+                        { return (
+                            <div key={album.id}>
+                                <NavLink to={`/album/${album.id}`}>{album.title}</NavLink>
+                            </div>)})}
                 </div>)
         } else {
             return null;

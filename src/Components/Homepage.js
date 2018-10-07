@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class Homepage extends React.Component {
     componentDidMount() {
@@ -16,7 +16,11 @@ class Homepage extends React.Component {
         return (
             <div className="homepage">
                 <h1>Users</h1>
-                {this.props.users.map(user => { return <NavLink to={`/user/${user.id}`} key={user.id}>{user.name}</NavLink>})}
+                {this.props.users.map(user => { return (
+                    <div key={user.id}>
+                        <Link to={`/user/${user.id}`}>{user.name}</Link>
+                    </div>
+                )})}
             </div>)
     }
 }
