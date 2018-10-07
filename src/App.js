@@ -1,13 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
+import './index.css';
+import Router from './router';
+import store from './store';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducer from './reducer'
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <h1>Photo Albums</h1>
-      </div>
-    );
-  }
+let initialState = {
+  users: [],
+  albums: [],
+  photos: [],
 }
+
+let store = createStore(
+  reducer,
+  initialState,
+  window.__REDUX_DEVTOOLS_EXTENSION__ &&window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+
+export default store;
+
+let App = 
+  <Provider store={store}>
+    <Router />
+  </Provider>
 
 export default App;
