@@ -9,7 +9,7 @@ const PhotoPage = (props) => {
             <div>
                 <Navigation />
                 {/*Back to prior page*/}
-                <img src={props.photo.url} alt={props.photo.title}></img>
+                <img src={props.photo.url} alt={props.photo.title}/>
                 <p>{props.photo.title}</p>
             </div>)
     }

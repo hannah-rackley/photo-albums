@@ -8,15 +8,6 @@ class AlbumPage extends React.Component {
         super(props)
     }
 
-    componentDidMount() {
-        fetch('http://jsonplaceholder.typicode.com/photos')
-            .then(response => {
-                return response.json();
-            })
-            .then(photos => {
-                this.props.dispatch({ type: 'LOAD_PHOTOS', photos: photos })
-             });
-    }
     render() {
         if (this.props.album !== undefined) {
             let filteredPhotos = this.props.photos.filter(photo => photo.albumId === this.props.album.id);
@@ -28,7 +19,9 @@ class AlbumPage extends React.Component {
                     {filteredPhotos.map(photo => 
                         { return (
                             <div key={photo.id}>
-                                <Link to={`/photo/${photo.id}`}><img src={photo.thumbnailUrl} alt={photo.title}/></Link>
+                                <Link to={`/photo/${photo.id}`}>
+                                    <img src={photo.thumbnailUrl} alt={photo.title}/>
+                                </Link>
                             </div>
                     )})}
                 </div>)
