@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import SmartDeleteButton from './DeleteButton';
+import Navigation from './Navigation';
 
 class Homepage extends React.Component {
     componentDidMount() {
@@ -19,6 +20,7 @@ class Homepage extends React.Component {
         if (this.props.users !== undefined) {
             return (
                 <div className="homepage">
+                    <Navigation />
                     <h1>Users</h1>
                     {this.props.users.map(user => { return (
                         <div key={user.id}>

@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Navigation = () => <div>
-    <NavLink activeStyle={{fontWeight: 'bold'}} to="/">Home</NavLink>
+    <NavLink className='navigation' activeStyle={{fontWeight: 'bold'}} exact to="/">HOME</NavLink>
 </div>
 
 export default Navigation;

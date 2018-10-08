@@ -11,7 +11,7 @@ class AlbumPage extends React.Component {
             return (
                 <div>
                     <Navigation />
-                    <h1>{this.props.album.title}</h1>
+                    <h1>{this.props.album.title}'s Photos</h1>
                     {filteredPhotos.map(photo => 
                         { return (
                             <div key={photo.id}>

@@ -8,7 +8,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+button {
+  font-weight: bolder;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.navigation {
+  display: flex;
+  text-decoration: none;
+  color: black;
+  background-color: rgba(0, 0, 0, 0.05);
+  width: 100%;
+  justify-content: center;
+  padding: 1em;
 }
