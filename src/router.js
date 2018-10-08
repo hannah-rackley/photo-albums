@@ -1,5 +1,6 @@
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import React from 'react';
+import { connect } from 'react-redux';
 import SmartHomepage from './Components/Homepage'
 import SmartUserAlbumsPage from './Components/UserAlbumsPage'
 import SmartAlbumPage from './Components/AlbumPage';
@@ -20,4 +21,6 @@ const Router = () => {
     )
 }
 
-export default Router;
+let SmartRouter = connect(state => state)(Router);
+
+export default SmartRouter;

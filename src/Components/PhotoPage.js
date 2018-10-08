@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Navigation from './Navigation';
-import { Link } from 'react-router-dom';
 
 const PhotoPage = (props) => {
     if (props.photo !== undefined) {
@@ -12,6 +11,8 @@ const PhotoPage = (props) => {
                 <img src={props.photo.url} alt={props.photo.title}/>
                 <p>{props.photo.title}</p>
             </div>)
+    } else {
+        return <p>Loading...</p>
     }
 }
 

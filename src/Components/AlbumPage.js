@@ -4,10 +4,6 @@ import Navigation from './Navigation';
 import { Link } from 'react-router-dom';
 
 class AlbumPage extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-
     render() {
         if (this.props.album !== undefined) {
             let filteredPhotos = this.props.photos.filter(photo => photo.albumId === this.props.album.id);
@@ -26,7 +22,7 @@ class AlbumPage extends React.Component {
                     )})}
                 </div>)
         } else {
-            return null;
+            return <p>Loading...</p>
         }
     }
 }

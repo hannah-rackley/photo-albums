@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import SmartDeleteUserButton from './DeleteUserButton';
 
 class Homepage extends React.Component {
     componentDidMount() {
@@ -13,18 +14,23 @@ class Homepage extends React.Component {
              });
     }
     render() {
-        return (
-            <div className="homepage">
-                <h1>Users</h1>
-                {this.props.users.map(user => { return (
-                    <div key={user.id}>
-                        <Link to={`/user/${user.id}`}>{user.name}</Link>
-                    </div>
-                )})}
-            </div>)
+        if (this.props.users !== undefined) {
+            return (
+                <div className="homepage">
+                    <h1>Users</h1>
+                    {this.props.users.map(user => { return (
+                        <div key={user.id}>
+                            <Link to={`/user/${user.id}`}>{user.name}</Link>
+                            <SmartDeleteUserButton user={user}/>
+                        </div>
+                    )})}
+                </div>)
+        } else {
+            return <p>Loading...</p>
+        }
     }
 }
 
-let SmartHomepage = connect(state => ({ users: state.users }))(Homepage);
+let SmartHomepage = connect(state => state)(Homepage);
 
 export default SmartHomepage;

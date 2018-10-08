@@ -4,9 +4,6 @@ import Navigation from './Navigation';
 import { Link } from 'react-router-dom';
 
 class UserAlbumsPage extends React.Component {
-    constructor(props) {
-        super(props)
-    }
     componentDidMount() {
         fetch('http://jsonplaceholder.typicode.com/albums')
             .then(response => {
@@ -32,7 +29,7 @@ class UserAlbumsPage extends React.Component {
         })
     }
     render() {
-        if (this.props.user !== undefined) {
+        if (this.props.photos !== undefined) {
             let userAlbums = this.getPhotoThumbnails();
             return (
                 <div>
@@ -50,7 +47,7 @@ class UserAlbumsPage extends React.Component {
                             </div>)})}
                 </div>)
         } else {
-            return null;
+            return <p>Loading...</p>
         }
     }
 }

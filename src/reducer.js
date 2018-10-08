@@ -19,10 +19,18 @@ const loadPhotos = (oldState, action) => {
     }
 }
 
+const deleteUser = (oldState, action) => {
+    return {
+        ...oldState, 
+        users: oldState.users.filter(user => user.id !== action.user.id)
+    }
+}
+
  const reducerRouter = {
     "LOAD_USERS": loadUsers,
     "LOAD_ALBUMS": loadAlbums,
-    "LOAD_PHOTOS": loadPhotos
+    "LOAD_PHOTOS": loadPhotos,
+    "DELETE_USER": deleteUser
 }
 
 const reducer = (oldState, action) => {
