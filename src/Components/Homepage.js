@@ -1,17 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import SmartDeleteUserButton from './DeleteUserButton';
+import SmartDeleteButton from './DeleteButton';
 
 class Homepage extends React.Component {
     componentDidMount() {
-        fetch('http://jsonplaceholder.typicode.com/users')
+        if (this.props.users === undefined) {
+            fetch('http://jsonplaceholder.typicode.com/users')
             .then(response => {
                 return response.json();
             })
             .then(users => {
                 this.props.dispatch({ type: 'LOAD_USERS', users: users })
              });
+        }
     }
     render() {
         if (this.props.users !== undefined) {
@@ -21,7 +23,7 @@ class Homepage extends React.Component {
                     {this.props.users.map(user => { return (
                         <div key={user.id}>
                             <Link to={`/user/${user.id}`}>{user.name}</Link>
-                            <SmartDeleteUserButton user={user}/>
+                            <SmartDeleteButton item={user} type='USER'/>
                         </div>
                     )})}
                 </div>)

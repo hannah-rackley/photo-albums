@@ -2,22 +2,23 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Navigation from './Navigation';
 import { Link } from 'react-router-dom';
+import SmartDeleteButton from './DeleteButton';
 
 class AlbumPage extends React.Component {
     render() {
-        if (this.props.album !== undefined) {
+        if (this.props.albums !== undefined) {
             let filteredPhotos = this.props.photos.filter(photo => photo.albumId === this.props.album.id);
             return (
                 <div>
                     <Navigation />
                     <h1>{this.props.album.title}</h1>
-                    {/*Back to prior page*/}
                     {filteredPhotos.map(photo => 
                         { return (
                             <div key={photo.id}>
                                 <Link to={`/photo/${photo.id}`}>
                                     <img src={photo.thumbnailUrl} alt={photo.title}/>
                                 </Link>
+                                <SmartDeleteButton item={photo} type='PHOTO'/>
                             </div>
                     )})}
                 </div>)

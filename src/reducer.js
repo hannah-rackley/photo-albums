@@ -22,7 +22,21 @@ const loadPhotos = (oldState, action) => {
 const deleteUser = (oldState, action) => {
     return {
         ...oldState, 
-        users: oldState.users.filter(user => user.id !== action.user.id)
+        users: oldState.users.filter(user => user.id !== action.item.id)
+    }
+}
+
+const deleteAlbum = (oldState, action) => {
+    return {
+        ...oldState, 
+        albums: oldState.albums.filter(album => album.id !== action.item.id)
+    }
+}
+
+const deletePhoto = (oldState, action) => {
+    return {
+        ...oldState, 
+        photos: oldState.photos.filter(photo => photo.id !== action.item.id)
     }
 }
 
@@ -30,7 +44,9 @@ const deleteUser = (oldState, action) => {
     "LOAD_USERS": loadUsers,
     "LOAD_ALBUMS": loadAlbums,
     "LOAD_PHOTOS": loadPhotos,
-    "DELETE_USER": deleteUser
+    "DELETE_USER": deleteUser,
+    "DELETE_ALBUM": deleteAlbum,
+    "DELETE_PHOTO": deletePhoto
 }
 
 const reducer = (oldState, action) => {

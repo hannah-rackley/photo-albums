@@ -2,23 +2,26 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Navigation from './Navigation';
 import { Link } from 'react-router-dom';
+import SmartDeleteButton from './DeleteButton';
 
 class UserAlbumsPage extends React.Component {
     componentDidMount() {
-        fetch('http://jsonplaceholder.typicode.com/albums')
-            .then(response => {
-                return response.json();
-            })
-            .then(albums => {
-                this.props.dispatch({ type: 'LOAD_ALBUMS', albums: albums })
-             })
-             .then(fetch('http://jsonplaceholder.typicode.com/photos')
-             .then(response => {
-                 return response.json();
-             })
-             .then(photos => {
-                 this.props.dispatch({ type: 'LOAD_PHOTOS', photos: photos })
-             }))
+        if (this.props.albums === undefined) {
+            fetch('http://jsonplaceholder.typicode.com/albums')
+                .then(response => {
+                    return response.json();
+                })
+                .then(albums => {
+                    this.props.dispatch({ type: 'LOAD_ALBUMS', albums: albums })
+                })
+                .then(fetch('http://jsonplaceholder.typicode.com/photos')
+                .then(response => {
+                    return response.json();
+                })
+                .then(photos => {
+                    this.props.dispatch({ type: 'LOAD_PHOTOS', photos: photos })
+                }))
+        }
     }
 
     getPhotoThumbnails() {
@@ -43,6 +46,7 @@ class UserAlbumsPage extends React.Component {
                                     <Link to={`/album/${current.album.id}`}>
                                         <img src={current.thumbnail} alt={current.album.title}/>
                                     </Link>
+                                    <SmartDeleteButton item={current.album} type='ALBUM'/>
                                 </div>
                             </div>)})}
                 </div>)
